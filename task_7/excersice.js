@@ -1001,9 +1001,94 @@ const person =
   { "id": 1000, "first_name": "Joseph", "last_name": "Westcarr", "email": "jwestcarrrr@google.com.au", "gender": "Male", "salary": 1466, "country": "Thailand", "car": "Mazda", "car_model_year": 2001, "age": 47 }]
 
 //მოცემული გაქვთ 1000 ელემენტიანი ობიექტების მასივი
-//1. უნდა დაითვალოთ ქალების და მამაკაცების რაოდენობა
+//1. უნდა დაითვალოთ ქ
 //2. მათი ჯამური და საშუალო ხელფასები
 //3. უნდა იპოვოთ ყველაზე ასაკოვანი ადამიანისა და ყველაზე ახალგაზრდა ადამიანის ხელფასებს შორის სხვაობა
 //4. დაითვალოთ მანქანის თითოეული მოდელის რაოდენობა
 //5. იპოვოთ იმ პიროვნების სახელ(ებ)ი რომელსაც ყავს ყველაზე ძველი მანქანა(გამოშვების წლის მიხედვით)
 //6. შეადაროთ 50 წელს ქვემოთ და 50 წელს ზემოთ პიროვნებების საშუალო ხელფასები
+
+
+
+
+// const gender = person.map((person) => person.gender) 
+
+// const genderObject = {}
+
+// gender.forEach((gender) => {
+//   if (genderObject[gender] ) {
+//    genderObject[gender]++
+//   } else (
+//     genderObject[gender] = 1
+
+//   )
+
+// })
+
+// console.log(gender)
+
+
+
+// 1)
+// Filter males and females
+const males = person.filter((person) => person.gender === "Male");
+const females = person.filter((person) => person.gender === "Female");
+
+console.log("Males:", males);
+console.log("Females:", females);
+
+
+// 2) 
+// Sum of male salaries
+const maleSalarySum = males.reduce((acc, person) => acc + person.salary, 0);
+console.log("Total male salaries:", maleSalarySum);
+
+// Sum of female salaries
+const femaleSalarySum = females.reduce((acc, person) => acc + person.salary, 0);
+console.log("Total female salaries:", femaleSalarySum);
+
+// Calculate average salary for males and females
+let maleAverageSalary;
+if (males.length > 0) {
+    maleAverageSalary = maleSalarySum / males.length;
+} else {
+    maleAverageSalary = 0;
+}
+
+let femaleAverageSalary = 0;
+if (females.length > 0) {
+    femaleAverageSalary = femaleSalarySum / females.length;
+}
+
+// Calculate overall average salary
+const totalSalarySum = maleSalarySum + femaleSalarySum;
+let overallAverageSalary = 0;
+if (person.length > 0) {
+    overallAverageSalary = (maleSalarySum + femaleSalarySum) / person.length;
+}
+console.log("Average male salary:", maleAverageSalary);
+console.log("Average female salary:", femaleAverageSalary);
+console.log("Overall average salary:", overallAverageSalary);
+
+
+// 3) 
+
+const salary = person.map((person) => person.salary === 'Salary'); 
+const oldespersonalSalary = {}
+
+salary.forEach((salary) => {
+  if (salaryObject[salary] ) {
+   salaryObject[salary]++
+  } else (
+    salaryObject[salary] = 1
+
+  )
+
+})
+
+console.log(salary)
+
+console.log("Oldest Person Salary", salary)
+
+
+
