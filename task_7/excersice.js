@@ -1008,27 +1008,6 @@ const person =
 //5. იპოვოთ იმ პიროვნების სახელ(ებ)ი რომელსაც ყავს ყველაზე ძველი მანქანა(გამოშვების წლის მიხედვით)
 //6. შეადაროთ 50 წელს ქვემოთ და 50 წელს ზემოთ პიროვნებების საშუალო ხელფასები
 
-
-
-
-// const gender = person.map((person) => person.gender) 
-
-// const genderObject = {}
-
-// gender.forEach((gender) => {
-//   if (genderObject[gender] ) {
-//    genderObject[gender]++
-//   } else (
-//     genderObject[gender] = 1
-
-//   )
-
-// })
-
-// console.log(gender)
-
-
-
 // 1)
 // Filter males and females
 const males = person.filter((person) => person.gender === "Male");
@@ -1116,8 +1095,50 @@ console.log("Car brand counts:", carObject);
 // 5
 
 const sortedByCarModelYear = person.sort((a, b) => a.car_model_year - b.car_model_year);
-
-
 const oldestCar = sortedByCarModelYear[0];
 
 console.log("The oldest car model is:", oldestCar.car, "from the year", oldestCar.car_model_year);
+
+// 6 
+
+function compareAverageSalariesByAge(personArray) {
+
+    const sortedPersons = personArray.sort((a, b) => a.age - b.age);
+
+    let under50SalarySum = 0;
+    let under50Count = 0;
+    let over50SalarySum = 0;
+    let over50Count = 0;
+
+    for (const person of sortedPersons) {
+        if (person.age < 50) {
+            under50SalarySum += person.salary;
+            under50Count++;
+        } else if (person.age > 50) {
+            over50SalarySum += person.salary;
+            over50Count++;
+        }
+    }
+
+    let under50AverageSalary = 0; 
+    if (under50Count > 0) {
+        under50AverageSalary = under50SalarySum / under50Count; 
+    }
+    
+    let over50AverageSalary = 0; 
+    if (over50Count > 0) {
+        over50AverageSalary = over50SalarySum / over50Count; }
+
+    console.log("Average salary for people under 50:", under50AverageSalary);
+    console.log("Average salary for people over 50:", over50AverageSalary);
+
+    if (under50AverageSalary > over50AverageSalary) {
+        console.log("People under 50 have a higher average salary.");
+    } else if (under50AverageSalary < over50AverageSalary) {
+        console.log("People over 50 have a higher average salary.");
+    } else {
+        console.log("People under and over 50 have the same average salary.");
+    }
+}
+
+compareAverageSalariesByAge(person);
