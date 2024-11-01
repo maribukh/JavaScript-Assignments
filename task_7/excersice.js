@@ -1094,6 +1094,7 @@ console.log("Oldest employee's salary:", oldestEmployee.salary);
 console.log("Youngest employee's salary:", youngestEmployee.salary);
 console.log("Salary difference between oldest and youngest employee:", salaryDifference);
 
+
 // 4
 
 const car = person.map((person) => person.car) 
@@ -1110,5 +1111,6 @@ car.forEach((car) => {
 
 })
 
-console.log("Car brand counts:", car)
+console.log("Car brand counts:", carObject);
 
+// 5
