@@ -1114,3 +1114,10 @@ car.forEach((car) => {
 console.log("Car brand counts:", carObject);
 
 // 5
+
+const sortedByCarModelYear = person.sort((a, b) => a.car_model_year - b.car_model_year);
+
+
+const oldestCar = sortedByCarModelYear[0];
+
+console.log("The oldest car model is:", oldestCar.car, "from the year", oldestCar.car_model_year);
