@@ -1,5 +1,5 @@
 const person =
-  [{ "id": 1, "first_name": "Zsazsa", "last_name": "Purchon", "email": "zpurchon0@a8.net", "gender": "Female", "salary": 1314, "country": "Iraq", "car": "Lexus", "car_model_year": 1996, "age": 93 },
+  [{ "id": 1, "first_name": "Zsazsa", "last_name": "Purchon", "email": "zpurchon0@a8.net", "gender": "Female", "salary": 1314, "country": "Iraq", "car": "", "car_model_year": 1996, "age": 93 },
   { "id": 2, "first_name": "Viviyan", "last_name": "Limbourne", "email": "vlimbourne1@baidu.com", "gender": "Female", "salary": 8745, "country": "Ukraine", "car": "Subaru", "car_model_year": 1991, "age": 66 },
   { "id": 3, "first_name": "Daryl", "last_name": "Wontner", "email": "dwontner2@marketwatch.com", "gender": "Female", "salary": 9958, "country": "Portugal", "car": "Ford", "car_model_year": 1997, "age": 77 },
   { "id": 4, "first_name": "Giles", "last_name": "Witson", "email": "gwitson3@washington.edu", "gender": "Male", "salary": 4089, "country": "China", "car": "BMW", "car_model_year": 2001, "age": 35 },
@@ -1071,24 +1071,44 @@ console.log("Average female salary:", femaleAverageSalary);
 console.log("Overall average salary:", overallAverageSalary);
 
 
-// 3) 
+// 3
 
-const salary = person.map((person) => person.salary === 'Salary'); 
-const oldespersonalSalary = {}
+// Initialize variables for oldest and youngest employees
+let oldestEmployee = person[0];
+let youngestEmployee = person[0];
 
-salary.forEach((salary) => {
-  if (salaryObject[salary] ) {
-   salaryObject[salary]++
+// Find the oldest and youngest employees
+for (const current of person) {
+    if (current.age > oldestEmployee.age) {
+        oldestEmployee = current;
+    }
+    if (current.age < youngestEmployee.age) {
+        youngestEmployee = current;
+    }
+}
+
+// Calculate the salary difference
+const salaryDifference = Math.abs(oldestEmployee.salary - youngestEmployee.salary);
+
+console.log("Oldest employee's salary:", oldestEmployee.salary);
+console.log("Youngest employee's salary:", youngestEmployee.salary);
+console.log("Salary difference between oldest and youngest employee:", salaryDifference);
+
+// 4
+
+const car = person.map((person) => person.car) 
+
+const carObject = {}
+
+car.forEach((car) => {
+  if (carObject[car] ) {
+   carObject[car]++
   } else (
-    salaryObject[salary] = 1
+    carObject[car] = 1
 
   )
 
 })
 
-console.log(salary)
-
-console.log("Oldest Person Salary", salary)
-
-
+console.log("Car brand counts:", car)
 
