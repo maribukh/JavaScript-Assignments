@@ -1013,8 +1013,8 @@ const person =
 const males = person.filter((person) => person.gender === "Male");
 const females = person.filter((person) => person.gender === "Female");
 
-console.log("Males:", males);
-console.log("Females:", females);
+console.log("Males:", males.length);
+console.log("Females:", females.length);
 
 
 // 2) 
