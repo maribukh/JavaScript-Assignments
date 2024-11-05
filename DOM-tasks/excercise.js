@@ -36,8 +36,55 @@ const drawTable = (data) => {
   
 drawTable(persons)
 
-const ulElements = document.querySelector('#paren ul')
-const newElement = document.createElement('li')
-newElement.innerHTML = 'new li element'
-console.log(ulElements.children)
-ulElements.insertBefore(newElement, ulElements.children[1])
+function addRowToTable(persons) {
+  const tableBody = document.querySelector('.table-body');
+  const tableRow = document.createElement('tr');
+
+  tableRow.innerHTML = `
+    <td>${data.id}</td>
+    <td>${data.first_name}</td>
+    <td>${data.last_name}</td>
+    <td>${data.email}</td>
+    <td>${data.gender}</td>
+  `;
+
+  tableBody.appendChild(tableRow);
+
+  const addTd = document.createElement('td')
+    const addButton = document.createElement('button')
+    addButton.addEventListener('click', () => { addRowToTableElement(data[i].id) })
+    addButton.innerHTML = 'add'
+
+}
+
+
+// const ulElements = document.querySelector('#paren ul')
+// const newElement = document.createElement('li')
+// newElement.innerHTML = 'new li element'
+// console.log(ulElements.children)
+// ulElements.insertBefore(newElement, ulElements.children[1])
+
+// const button = document.querySelector('button')
+// const addButton = document.querySelector('addButton')
+
+// button.addEventListener("click")
+
+// function submit() {
+//   alert("Function called")
+// }
+
+// const button = document.querySelector('button')
+// const addButton = document.querySelector('.addbutton')
+// console.log(menu.classlist.contains('active'))
+
+// console.log(addbutton.classlist.contains)
+
+// const showAdd = () => {
+
+//   if (menu.classlist.contains('active')) {
+//     menu.classlist.remove
+//   }
+// }
+
+// button.addEventListener('click', showMenu)
+
