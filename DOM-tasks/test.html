@@ -13,6 +13,10 @@
     th, td {
       padding: 5px 10px;
     }
+
+    ul {
+      list-style: none;
+    }
   </style>
 </head>
 <body>
@@ -31,6 +35,29 @@
 
     </tbody>
   </table>
+  <div class="login-container">
+    <ul>
+      <li>User Name</li>
+      <form class="username">
+        <input type="text" placeholder="name">
+      </form>
+      <li>Last Name</li>
+      <form class="lastname">
+        <input type="text" placeholder="lastname">
+      </form>
+      <li>E-mail</li>
+      <form class="email">
+        <input type="email" placeholder="e-mail:"> <br>
+      </form>
+      <li>Please enter your gender</li>
+      <form class="gender">
+        <input type="gender"> 
+      </form>
+    </ul>
+    <div class="Addbutton">
+      <button>Enter</button>
+    </div>
+  </div>
   <script src="./data.js"></script>
   <script src="./excercise.js"></script>
 </body>

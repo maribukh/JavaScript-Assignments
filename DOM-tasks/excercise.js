@@ -33,5 +33,11 @@ const drawTable = (data) => {
     tableBody.appendChild(tableRow)
   }
 }
-
+  
 drawTable(persons)
+
+const ulElements = document.querySelector('#paren ul')
+const newElement = document.createElement('li')
+newElement.innerHTML = 'new li element'
+console.log(ulElements.children)
+ulElements.insertBefore(newElement, ulElements.children[1])
