@@ -26,7 +26,7 @@
   </style>
 </head>
 <body>
-  <table>
+  <table id="MyTable">
     <thead>
       <tr>
         <th>#</th>
@@ -38,32 +38,28 @@
       </tr>
     </thead>
     <tbody>
-
+    <!-- Add New Row here -->
     </tbody>
   </table>
-  <!-- Added "forms" & "inputs"  -->
+  <!-- Added "inputs"  -->
   <div class="login-container"> 
     <ul>
-      <li>User Name</li>
-      <form class="username">
-        <input type="text" placeholder="name">
-      </form>
+      <li>First Name</li>
+      <input type="text" id="firstName" placeholder="First Name">
+      
       <li>Last Name</li>
-      <form class="lastname">
-        <input type="text" placeholder="lastname">
-      </form>
-      <li>E-mail</li>
-      <form class="email">
-        <input type="email" placeholder="e-mail:"> <br>
-      </form>
-      <li>Please enter your gender</li>
-      <form class="gender">
-        <input type="gender"> 
-      </form>
+      <input type="text" id="lastName" placeholder="Last Name">
+      
+      <li>Email</li>
+      <input type="email" id="email" placeholder="Email">
+      
+      <li>Gender</li>
+      <input type="text" id="gender" placeholder="Gender">
     </ul>
     <div class="Addbutton">
-      <button>Enter</button>
+      <button type="button" onclick="addNewRow()">Add</button>
     </div>
+  </div>
   </div>
   <script src="./data.js"></script>
   <script src="./excercise.js"></script>

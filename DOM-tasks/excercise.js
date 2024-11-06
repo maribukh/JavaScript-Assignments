@@ -1,90 +1,59 @@
+const tableBody = document.querySelector('#MyTable tbody');
 
-const tableBody = document.querySelector('table tbody')
-console.log(tableBody)
+// draw Table 
+const drawTable = (data) => {
+  tableBody.innerHTML = '';
+  data.forEach((person) => {
+    const tableRow = document.createElement('tr');
+    tableRow.innerHTML = `
+      <td>${person.id}</td>
+      <td>${person.first_name}</td>
+      <td>${person.last_name}</td>
+      <td>${person.email}</td>
+      <td>${person.gender}</td>
+      <td><button onclick="removeRow(${person.id})">Remove</button></td>
+    `;
+    tableBody.appendChild(tableRow);
+  });
+};
 
-const removeElement = (id) => {
-  // console.log(row)
-  // row.remove()
-  // console.log(id)
-  const foundIndex = persons.findIndex((item) => item.id === id)
-  persons.splice(foundIndex, 1)
-  drawTable(persons)
+// Add New Row
+function addNewRow() {
+  const firstName = document.getElementById("firstName").value;
+  const lastName = document.getElementById("lastName").value;
+  const email = document.getElementById("email").value;
+  const gender = document.getElementById("gender").value;
+
+  if (!firstName || !lastName || !email || !gender) {
+    alert("Please fill all fields!");
+    return;
+  }
+
+  const newPerson = {
+    id: persons.length + 1,
+    first_name: firstName,
+    last_name: lastName,
+    email: email,
+    gender: gender
+  };
+
+  persons.push(newPerson);
+  drawTable(persons);
+
+  document.getElementById("firstName").value = '';
+  document.getElementById("lastName").value = '';
+  document.getElementById("email").value = '';
+  document.getElementById("gender").value = '';
 }
 
-const drawTable = (data) => {
-  tableBody.innerHTML = ''
-  for (let i = 0; i < data.length; i++) {
-    const tableRow = document.createElement('tr')
-    tableRow.innerHTML = `
-        <td>${data[i].id}</td>
-        <td>${data[i].first_name}</td>
-        <td>${data[i].last_name}</td>
-        <td>${data[i].email}</td>
-        <td>${data[i].gender}</td>
-    `
-
-    const removeTd = document.createElement('td')
-    const removeButton = document.createElement('button')
-    removeButton.addEventListener('click', () => { removeElement(data[i].id) })
-    removeButton.innerHTML = 'remove'
-
-    removeTd.appendChild(removeButton)
-    tableRow.appendChild(removeTd)
-    tableBody.appendChild(tableRow)
+// function -> remove Row 
+function removeRow(id) {
+  const index = persons.findIndex(person => person.id === id);
+  if (index !== -1) {
+    persons.splice(index, 1);
+    drawTable(persons);
   }
 }
-  
-drawTable(persons)
-
-function addRowToTable(persons) {
-  const tableBody = document.querySelector('.table-body');
-  const tableRow = document.createElement('tr');
-
-  tableRow.innerHTML = `
-    <td>${data.id}</td>
-    <td>${data.first_name}</td>
-    <td>${data.last_name}</td>
-    <td>${data.email}</td>
-    <td>${data.gender}</td>
-  `;
-
-  tableBody.appendChild(tableRow);
-
-  const addTd = document.createElement('td')
-    const addButton = document.createElement('button')
-    addButton.addEventListener('click', () => { addRowToTableElement(data[i].id) })
-    addButton.innerHTML = 'add'
-
-}
 
 
-// const ulElements = document.querySelector('#paren ul')
-// const newElement = document.createElement('li')
-// newElement.innerHTML = 'new li element'
-// console.log(ulElements.children)
-// ulElements.insertBefore(newElement, ulElements.children[1])
-
-// const button = document.querySelector('button')
-// const addButton = document.querySelector('addButton')
-
-// button.addEventListener("click")
-
-// function submit() {
-//   alert("Function called")
-// }
-
-// const button = document.querySelector('button')
-// const addButton = document.querySelector('.addbutton')
-// console.log(menu.classlist.contains('active'))
-
-// console.log(addbutton.classlist.contains)
-
-// const showAdd = () => {
-
-//   if (menu.classlist.contains('active')) {
-//     menu.classlist.remove
-//   }
-// }
-
-// button.addEventListener('click', showMenu)
-
+drawTable(persons);
