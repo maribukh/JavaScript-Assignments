@@ -1,6 +1,13 @@
 const tableBody = document.querySelector('#MyTable tbody');
+let sortOrder = {
+  id: true,
+  first_name: true,
+  last_name: true,
+  email: true,
+  gender: true
+};
 
-// draw Table 
+// draw table
 const drawTable = (data) => {
   tableBody.innerHTML = '';
   data.forEach((person) => {
@@ -11,13 +18,12 @@ const drawTable = (data) => {
       <td>${person.last_name}</td>
       <td>${person.email}</td>
       <td>${person.gender}</td>
-      <td><button onclick="removeRow(${person.id})">Remove</button></td>
-    `;
+      <td><button onclick="removeRow(${person.id})">Remove</button></td>`;
     tableBody.appendChild(tableRow);
   });
 };
 
-// Add New Row
+// add new row
 function addNewRow() {
   const firstName = document.getElementById("firstName").value;
   const lastName = document.getElementById("lastName").value;
@@ -46,7 +52,7 @@ function addNewRow() {
   document.getElementById("gender").value = '';
 }
 
-// function -> remove Row 
+// remove row
 function removeRow(id) {
   const index = persons.findIndex(person => person.id === id);
   if (index !== -1) {
@@ -56,4 +62,33 @@ function removeRow(id) {
 }
 
 
+function sortByField(field) {
+  persons.sort((a, b) => {
+    if (a[field] > b[field]) return sortOrder[field] ? 1 : -1;
+    if (a[field] < b[field]) return sortOrder[field] ? -1 : 1;
+    return 0;
+  });
+  sortOrder[field] = !sortOrder[field];
+  drawTable(persons);
+}
+
+
+document.getElementById("MyTable").querySelectorAll("th").forEach((header, index) => {
+  const fields = ["id", "first_name", "last_name", "email", "gender"];
+  if (index < fields.length) {
+    header.addEventListener("click", () => {
+      sortByField(fields[index]);
+    });
+  }
+});
+
 drawTable(persons);
+
+// // const sort = document.querySelectorAll('#MyTable tbody');
+// let sortedRows = Array.from(tableBody.rows)
+// .slice(1)
+// .sort((rowA, RowB) =>  {
+//    return rowA.cells[1].innerHTML - RowB.cells[1].innerHTML
+// })
+// tableBody.tBodies[0].append(...sortedRows)
+
